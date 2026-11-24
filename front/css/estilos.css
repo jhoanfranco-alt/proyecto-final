@@ -1,0 +1,188 @@
+/* Reset básico y tipografía */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-image: url('../assets/fondo.jpg');
+    background-size: cover;
+    
+}
+
+/* --- ESTILOS DEL ENCABEZADO --- */
+.encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Contenedor del Logo e Identidad */
+.encabezado > a:first-child {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nombre-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.fragancia.selecta {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+        nav {
+            background-color: transparent;
+            color: rgb(214, 218, 29);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 120px;
+            min-height: 55px;
+            flex-wrap: wrap;
+            font-size: 15px;
+            font-weight: bold;
+            nav a {
+                text-decoration: none;
+                color: #333333;
+                transition: color 0.2s ease;
+            }
+            nav a:hover {
+                color: #59c57d;
+            }
+        }
+
+.calidad {
+    font-size: 11px;
+    color: #666666;
+    text-transform: lowercase;
+}
+
+.pereira {
+    font-size: 10px;
+    color: #888888;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+/* Buscador */
+.buscador {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4;
+    border-radius: 30px;
+    padding: 8px 18px;
+    width: 320px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.buscador:focus-within {
+    background-color: #ffffff;
+    border-color: #c5a059;
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.12);
+}
+
+.buscador input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 13px;
+    color: #333333;
+}
+
+.buscador input::placeholder {
+    color: #999999;
+}
+
+.buscador button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666666;
+    padding-left: 8px;
+    transition: color 0.2s;
+}
+
+.buscador button:hover {
+    color: #c5a059;
+}
+
+/* Enlaces del header */
+.enlace-header, .pagos, .idioma {
+    text-decoration: none;
+    color: #333333;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.enlace-header:hover, .idioma:hover {
+    color: #c5a059;
+}
+
+/* Botón de Pagos */
+.pagos {
+    background-color: #fcf9f2;
+    padding: 9px 16px;
+    border-radius: 6px;
+    border: 1px solid #e6dec9;
+    color: #6c5423;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.pagos:hover {
+    background-color: #f7f1e3;
+    border-color: #c5a059;
+}
+
+/* Selector de Idioma */
+.idioma {
+    font-weight: 600;
+    color: #555555;
+}
+
+/* --- DISEÑO RESPONSIVO (MÓVILES) --- */
+@media (max-width: 900px) {
+    .encabezado {
+        justify-content: center;
+        padding: 15px;
+    }
+    
+    .buscador {
+        order: 4;
+        width: 100%;
+    }
+}
+nav a {
+    text-decoration: none;
+    color: #333333;
+    transition: color 0.2s ease;
+}

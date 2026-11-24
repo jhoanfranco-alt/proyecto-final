@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragancia selecta</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="encabezado">
+
+        <a href="#" >
+            <img src="assets/image.png" alt="Logo de Fragancia selecta" class="logo-img">
+
+            <div class="nombre-logo">
+                <div class="fragancia selecta">Fragancia selecta</div>
+                <div class="calidad">Calidad</div>
+                <div class="garantizada">garantizada</div>
+            </div>
+        </a>
+
+        <form class="buscador" onsubmit="event.preventDefault()">
+            <input type="search"
+                    placeholder="Buscar perfumes, marcas, promos...">
+            <button type="submit">⌕</button>
+        </form>
+
+        <a href="#" class="enlace-header">♧ Tienda</a>
+
+        <a href="#" class="pagos">▤ &nbsp; Pagos en línea →</a>
+
+        <a href="#" class="idioma">◎ &nbsp; ES ⌄</a>
+</header>
+    <nav>
+        <a href="#">Ofertas </a>
+        <a href="damas.html">dama</a>
+        <a href="#">caballero</a>
+        <a href="#">Contacto</a>
+    </nav>
+    <button id="btnCargar">Cargar Usuario</button>
+    
+    <!-- Div donde mostraremos el resultado -->
+    <div id="resultado">Haz clic en el botón para ver la información...</div>
+
+    <script>
+        const btnCargar = document.getElementById('btnCargar');
+        const divResultado = document.getElementById('resultado');
+
+        btnCargar.addEventListener('click', async () => {
+            // 1. Mostrar estado de carga mientras se espera la respuesta
+            divResultado.innerHTML = 'Cargando datos... ⏳';
+
+            try {
+                // 2. Hacer la petición fetch
+                const respuesta = await fetch('http://127.0.0.1:8000/perfumes/');
+
+                if (!respuesta.ok) {
+                    throw new Error(`Error en la petición: ${respuesta.status}`);
+                }
+
+                // 3. Convertir a JSON
+                const datos = await respuesta.json();
+
+                // 4.  ciclo para Inyectar los datos formateados dentro del div
+                
+                divResultado.innerHTML = `
+                    <h3>¡Datos del Usuario!</h3>
+                    <p> <img src="${datos[0].src}" alt="Imagen del perfume" style="max-width: 200px;"></p>
+                    <p><strong>Nombre:</strong> ${datos[0].nombre}</p>
+                    <p><strong>familia_olfativa:</strong> ${datos[0].familia_olfativa}</p>
+                    <p><strong>precio:</strong> $${datos[0].precio.toLocaleString()}</p>
+                    <p><strong>stock:</strong> ${datos[0].stock}</p>
+                `; 
+
+            } catch (error) {
+                // 5. Manejar errores visualmente en el div
+                divResultado.innerHTML = `<p style="color: red;">❌ Hubo un error: ${error.message}</p>`;
+            }
+        });
+    </script>
