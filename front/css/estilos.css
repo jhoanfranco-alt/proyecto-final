@@ -186,3 +186,12 @@ nav a {
     color: #333333;
     transition: color 0.2s ease;
 }
+.hero-centrado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center;     /* Centra horizontalmente */
+    text-align: center;      /* Centra las líneas del texto */
+    min-height: 60vh;        /* Alto de la sección (ajústalo a tu gusto) */
+    padding: 20px;
+}
