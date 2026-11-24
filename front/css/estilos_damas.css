@@ -1,0 +1,76 @@
+/* Estilos generales y disposición en cuadrícula */
+body{   
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f8f6;
+    color: #2c2c2c;
+    margin: 0;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin-inline: auto;
+}
+/* Tarjeta individual de cada perfume */
+.perfume {
+    background-color: #ffffff;
+    border: 1px solid #eae6df;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.perfume:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Imagen del producto */
+.perfume img {
+    width: 100%;
+    max-width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+/* Nombre del perfume */
+.perfume h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+}
+
+/* Descripción / Familia olfativa */
+.perfume p:first-of-type {
+    font-size: 0.9rem;
+    color: #6e6e6e;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+}
+
+/* Precio */
+.perfume p:last-of-type {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #9c7a3c;
+    margin-top: auto;
+    margin-bottom: 0;
+    padding-top: 12px;
+    border-top: 1px solid #f2efe9;
+    width: 100%;
+}
+/* Reset básico y tipografía */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
