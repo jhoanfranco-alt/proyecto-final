@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fragancia selecta</title>
 
+    <link rel="stylesheet" href="css/estilos_damas.css">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -34,6 +35,34 @@
 </header>
     <nav>
         <a href="index.html">inicio </a>
-        <a href="damas.html">dama</a>
+        <a href="caballero.html">caballero</a>
         <a href="contacto.html">Contacto</a>
     </nav>
+    
+    <script>
+        for (let i = 1; i <= 6; i++) {
+            const perfume = document.createElement('div');
+            perfume.classList.add('perfume');
+
+            const img = document.createElement('img');
+            img.src = `assets/image.png`;
+            img.alt = `Perfume ${i}`;
+
+            const nombre = document.createElement('h3');
+            nombre.textContent = `Nombre del Perfume ${i}`;
+
+            const familiaOlfativa = document.createElement('p');
+            familiaOlfativa.textContent = `Familia olfativa: Descripción ${i}`;
+
+            const precio = document.createElement('p');
+            precio.textContent = `Precio: $${(i * 10000).toLocaleString()}`;
+
+            perfume.appendChild(img);
+            perfume.appendChild(nombre);
+            perfume.appendChild(familiaOlfativa);
+            perfume.appendChild(precio);
+
+            document.body.appendChild(perfume);
+        }
+    </script>
+    
