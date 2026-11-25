@@ -187,11 +187,50 @@ nav a {
     transition: color 0.2s ease;
 }
 .hero-centrado {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra verticalmente */
-    align-items: center;     /* Centra horizontalmente */
-    text-align: center;      /* Centra las líneas del texto */
-    min-height: 60vh;        /* Alto de la sección (ajústalo a tu gusto) */
-    padding: 20px;
+    display: block;
+    min-height: 0;
+    padding: 20px 40px;
+}
+
+.hero-texto {
+    width: 390px;
+    max-width: 100%;
+    height: auto;
+    overflow: visible;
+    padding: 24px;
+    background-color: rgba(255, 255, 255, 0.88);
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(70, 50, 20, 0.12);
+    color: #352817;
+    text-align: left;
+}
+
+.hero-texto h1 {
+    margin-bottom: 16px;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.45;
+}
+
+.hero-texto p {
+    color: #5b5144;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .hero-centrado {
+        padding: 20px;
+    }
+
+    .hero-texto {
+        width: 100%;
+        height: auto;
+        max-height: 430px;
+        padding: 24px;
+    }
+
+    .hero-texto h1 {
+        font-size: 21px;
+    }
 }
