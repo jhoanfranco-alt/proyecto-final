@@ -234,3 +234,268 @@ nav a {
         font-size: 21px;
     }
 }
+/* Estilos exclusivos de la página de inicio */
+body.inicio-page {
+  margin: 0;
+  background: #fff;
+  color: #292821;
+  font-family: Arial, sans-serif;
+}
+
+.inicio-page * {
+  box-sizing: border-box;
+}
+
+.inicio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 5%;
+  border-bottom: 1px solid #e9e5da;
+  background: #fff;
+}
+
+.inicio-marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #292821;
+  text-decoration: none;
+}
+
+.inicio-marca img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.inicio-marca span,
+.inicio-footer div {
+  display: flex;
+  flex-direction: column;
+}
+
+.inicio-marca strong {
+  font: 24px Georgia, serif;
+}
+
+.inicio-marca small,
+.inicio-footer small {
+  margin-top: 4px;
+  color: #856719;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.inicio-nav {
+  display: flex;
+  gap: 26px;
+}
+
+.inicio-nav a {
+  color: #292821;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.inicio-nav a:hover,
+.inicio-enlace:hover {
+  color: #b08a31;
+}
+
+.inicio-whatsapp {
+  padding: 11px 16px;
+  border: 1px solid #e7dcc0;
+  color: #856719;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.inicio-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  max-width: 1200px;
+  min-height: 590px;
+  margin: auto;
+  padding: 55px 5%;
+}
+
+.inicio-etiqueta {
+  color: #856719;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.inicio-texto h1 {
+  margin: 22px 0;
+  font: 68px/1 Georgia, serif;
+}
+
+.inicio-texto h1 em {
+  color: #b08a31;
+  font-weight: normal;
+}
+
+.inicio-texto p,
+.inicio-promesa p {
+  color: #77756e;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.inicio-botones {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.inicio-boton {
+  display: inline-block;
+  padding: 15px 20px;
+  background: #b08a31;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.inicio-boton:hover {
+  background: #856719;
+}
+
+.inicio-enlace {
+  color: #856719;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.inicio-foto {
+  height: 390px;
+}
+
+.inicio-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inicio-colecciones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  max-width: 1100px;
+  margin: 10px auto 70px;
+  padding: 0 24px;
+}
+
+.inicio-colecciones a {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 90px;
+  padding: 18px;
+  border: 1px solid #e9e5da;
+  background: #f8f6f0;
+  color: #292821;
+  text-decoration: none;
+}
+
+.inicio-colecciones span {
+  color: #b08a31;
+  font-size: 11px;
+}
+
+.inicio-colecciones strong {
+  flex: 1;
+  font: 21px Georgia, serif;
+}
+
+.inicio-colecciones b {
+  color: #856719;
+}
+
+.inicio-promesa {
+  padding: 85px 20px;
+  background: #f8f6f0;
+  text-align: center;
+}
+
+.inicio-promesa h2 {
+  margin: 18px 0;
+  font: 46px/1.1 Georgia, serif;
+}
+
+.inicio-promesa p {
+  margin-bottom: 28px;
+}
+
+.inicio-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 38px 7%;
+  border-top: 1px solid #e9e5da;
+}
+
+.inicio-footer strong {
+  font: 21px Georgia, serif;
+}
+
+.inicio-footer a {
+  margin-top: 8px;
+  color: #77756e;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .inicio-header {
+    flex-wrap: wrap;
+  }
+
+  .inicio-nav {
+    order: 3;
+    flex-wrap: wrap;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .inicio-whatsapp {
+    margin-left: auto;
+  }
+
+  .inicio-hero {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding-top: 45px;
+  }
+
+  .inicio-texto h1 {
+    font-size: 50px;
+  }
+
+  .inicio-foto {
+    height: 280px;
+  }
+
+  .inicio-colecciones {
+    grid-template-columns: 1fr;
+    margin-bottom: 45px;
+  }
+
+  .inicio-promesa h2 {
+    font-size: 36px;
+  }
+
+  .inicio-footer {
+    flex-direction: column;
+  }
+}

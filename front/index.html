@@ -1,88 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragancia selecta</title>
-
-    <link rel="stylesheet" href="css/estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fragancia Selecta</title>
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
-<body>
+<body class="inicio-page" id="inicio">
 
-    <header class="encabezado">
+  <header class="inicio-header">
+    <a class="inicio-marca" href="#inicio">
+      <img src="assets/image.png" alt="Logo de Fragancia Selecta">
+      <span>
+        <strong>Fragancia Selecta</strong>
+        <small>AROMAS PARA CADA MOMENTO</small>
+      </span>
+    </a>
 
-        <a href="#" >
-            <img src="assets/image.png" alt="Logo de Fragancia selecta" class="logo-img">
-
-            <div class="nombre-logo">
-                <div class="fragancia selecta">Fragancia selecta</div>
-                <div class="calidad">Calidad</div>
-                <div class="garantizada">garantizada</div>
-            </div>
-        </a>
-
-        <form class="buscador" onsubmit="event.preventDefault()">
-            <input type="search"
-                    placeholder="Buscar perfumes, marcas, promos...">
-            <button type="submit">⌕</button>
-        </form>
-
-        <a href="#" class="enlace-header">♧ Tienda</a>
-
-        <a href="#" class="pagos">▤ &nbsp; Pagos en línea →</a>
-
-        <a href="#" class="idioma">◎ &nbsp; ES ⌄</a>
-</header>
-    <nav>
-        <a href="#">Ofertas </a>
-        <a href="damas.html">dama</a>
-        <a href="caballeros.html">caballero</a>
-        <a href="contacto.html">Contacto</a>
+    <nav class="inicio-nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#colecciones">Mujer</a>
+      <a href="#colecciones">Hombre</a>
+      <a href="#colecciones">Descuentos</a>
+      <a href="https://wa.me/573104236888" target="_blank">Contacto</a>
     </nav>
-    <button id="btnCargar">Cargar Usuario</button>
-    
-    <!-- Div donde mostraremos el resultado -->
-    <div id="resultado">Haz clic en el botón para ver la información...</div>
 
-    <script>
-        const btnCargar = document.getElementById('btnCargar');
-        const divResultado = document.getElementById('resultado');
+    <a class="inicio-whatsapp" href="https://wa.me/573104236888" target="_blank">
+      WhatsApp ↗
+    </a>
+  </header>
 
-        btnCargar.addEventListener('click', async () => {
-            // 1. Mostrar estado de carga mientras se espera la respuesta
-            divResultado.innerHTML = 'Cargando datos... ⏳';
+  <main>
+    <section class="inicio-hero">
+      <div class="inicio-texto">
+        <span class="inicio-etiqueta">FRAGANCIAS SELECCIONADAS</span>
+        <h1>Encuentra el aroma<br><em>que habla de ti.</em></h1>
+        <p>Descubre una colección para cada estilo, cada día y cada ocasión.</p>
+        <div class="inicio-botones">
+          <a class="inicio-boton" href="#colecciones">Explorar colección ↗</a>
+          <a class="inicio-enlace" href="#colecciones">Ver ofertas</a>
+        </div>
+      </div>
 
-            try {
-                // 2. Hacer la petición fetch
-                const respuesta = await fetch('http://127.0.0.1:8000/perfumes/');
+      <div class="inicio-foto">
+        <img src="assets/fondo.jpg" alt="Fragancia Selecta">
+      </div>
+    </section>
 
-                if (!respuesta.ok) {
-                    throw new Error(`Error en la petición: ${respuesta.status}`);
-                }
+    <section class="inicio-colecciones" id="colecciones">
+      <a href="#colecciones"><span>01</span><strong>Fragancias para mujer</strong><b>↗</b></a>
+      <a href="#colecciones"><span>02</span><strong>Fragancias para hombre</strong><b>↗</b></a>
+      <a href="#colecciones"><span>03</span><strong>Ofertas especiales</strong><b>↗</b></a>
+    </section>
 
-                // 3. Convertir a JSON
-                const datos = await respuesta.json();
+    <section class="inicio-promesa">
+      <span class="inicio-etiqueta">FRAGANCIA SELECTA</span>
+      <h2>Calidad y personalidad<br>en cada esencia.</h2>
+      <p>Los precios publicados son ejemplos. Consulta el precio final por WhatsApp.</p>
+      <a class="inicio-boton" href="https://wa.me/573104236888" target="_blank">
+        Pedir asesoría ↗
+      </a>
+    </section>
+  </main>
 
-                // 4.  ciclo para Inyectar los datos formateados dentro del div
-                
-                divResultado.innerHTML = `
-                    <h3>¡Datos del Usuario!</h3>
-                    <p> <img src="${datos[0].src}" alt="Imagen del perfume" style="max-width: 200px;"></p>
-                    <p><strong>Nombre:</strong> ${datos[0].nombre}</p>
-                    <p><strong>familia_olfativa:</strong> ${datos[0].familia_olfativa}</p>
-                    <p><strong>precio:</strong> $${datos[0].precio.toLocaleString()}</p>
-                    <p><strong>stock:</strong> ${datos[0].stock}</p>
-                `; 
-
-            } catch (error) {
-                // 5. Manejar errores visualmente en el div
-                divResultado.innerHTML = `<p style="color: red;">❌ Hubo un error: ${error.message}</p>`;
-            }
-        });
-    </script>
-<section class="hero-centrado">
-    <div class="hero-texto">
-        <h1>Nuestros perfumes son calidad 1.1, lo que significa que cuentan con una fragancia muy similar a la original, tanto en aroma como en duración. Están elaborados con esencias concentradas de alta calidad, ofreciendo una excelente fijación y proyección durante el día.</h1>
-        <p>Explora nuestra colección y descubre el aroma perfecto para ti.</p>
+  <footer class="inicio-footer">
+    <div>
+      <strong>Fragancia Selecta</strong>
+      <small>AROMAS PARA CADA MOMENTO</small>
     </div>
-</section>
+    <div>
+      <strong>Explora</strong>
+      <a href="#colecciones">Mujer · Hombre · Descuentos</a>
+    </div>
+    <div>
+      <strong>Contacto</strong>
+      <a href="https://wa.me/573104236888" target="_blank">WhatsApp +57 310 423 6888</a>
+    </div>
+  </footer>
+
+</body>
+</html>
