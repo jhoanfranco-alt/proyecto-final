@@ -1,15 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragancia selecta</title>
+    <title>Contacto - Fragancia Selecta</title>
 
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/contacto.css">
 </head>
 <body>
 
     <header class="encabezado">
 
-        <a href="#" >
+        <a href="index.html">
             <img src="assets/image.png" alt="Logo de Fragancia selecta" class="logo-img">
 
             <div class="nombre-logo">
@@ -25,15 +28,100 @@
             <button type="submit">⌕</button>
         </form>
 
-        <a href="#" class="enlace-header">♧ Tienda</a>
+        <a href="index.html" class="enlace-header">♧ Tienda</a>
 
         <a href="#" class="pagos">▤ &nbsp; Pagos en línea →</a>
 
         <a href="#" class="idioma">◎ &nbsp; ES ⌄</a>
 
-</header>
+    </header>
+
     <nav>
-        <a href="index.html">inicio </a>
-        <a href="caballero.html">caballero</a>
-        <a href="damas.html">dama</a>
+        <a href="index.html">Inicio</a>
+        <a href="caballeros.html">Caballero</a>
+        <a href="damas.html">Dama</a>
     </nav>
+
+    <section class="titulo-seccion">
+        <h1>Contáctanos</h1>
+        <p>Asesoría personalizada para encontrar tu fragancia ideal</p>
+    </section>
+
+    <main class="contacto-contenedor">
+        <aside class="contacto-tarjeta">
+            <h2>Información de atención</h2>
+            <p class="subtexto">¿Buscas una referencia específica, precios al por mayor o asesoría sobre fijación y notas olfativas? Escríbenos.</p>
+
+            <div class="dato-contacto">
+                <strong>Ubicación</strong>
+                <span>Pereira, Risaralda - Envíos a todo el país</span>
+            </div>
+
+            <div class="dato-contacto">
+                <strong>WhatsApp y Pedidos</strong>
+                <span>+57 302 6983732</span>
+            </div>
+
+            <div class="dato-contacto">
+                <strong>Correo electrónico</strong>
+                <span>contacto@fraganciaselecta.com</span>
+            </div>
+
+            <div class="dato-contacto">
+                <strong>Horario de atención</strong>
+                <span>Lunes a sábado: 9:00 a.m. – 7:00 p.m.</span>
+            </div>
+        </aside>
+
+        <section class="contacto-tarjeta">
+            <h2>Envíanos un mensaje</h2>
+            <form id="form-contacto">
+                <div class="campo-formulario">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" placeholder="Tu nombre" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="correo">Correo electrónico o WhatsApp</label>
+                    <input type="text" id="correo" placeholder="ejemplo@correo.com o 300 123 4567" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="asunto">Motivo de consulta</label>
+                    <select id="asunto">
+                        <option value="asesoria">Asesoría de fragancia</option>
+                        <option value="pedido">Consulta sobre un pedido</option>
+                        <option value="catalogo">Disponibilidad en catálogo</option>
+                        <option value="otro">Otro motivo</option>
+                    </select>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" placeholder="Cuéntanos qué perfume buscas o cómo podemos ayudarte..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar">Enviar mensaje</button>
+                <div id="mensaje-exito" class="mensaje-exito">
+                    ¡Gracias por escribirnos! Hemos recibido tu mensaje y pronto nos pondremos en contacto contigo.
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const formulario = document.getElementById('form-contacto');
+        const mensajeExito = document.getElementById('mensaje-exito');
+
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+            mensajeExito.style.display = 'block';
+            formulario.reset();
+
+            setTimeout(() => {
+                mensajeExito.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
