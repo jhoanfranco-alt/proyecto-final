@@ -25,7 +25,7 @@ class Perfume(BaseModel):
     stock: int = 10
 
 # Lista en memoria con perfumes iniciales de ejemplo
-catalogo_perfumes_dama: List[Perfume] = [
+catalogo_perfumes: List[Perfume] = [
     Perfume(id=1, src="assets/SORBETTO_ROSSO.jpeg", nombre="SORBETTO ROSSO", familia_olfativa="Acuatico, afrutado y dulce",  precio=80000, stock=15),
     Perfume(id=2, src="assets/BOMBSHELL.jpeg", nombre="BOMBSHELL",  familia_olfativa="Afrutado, dulce y fresco",  precio=80000, stock=8),
     Perfume(id=3, src="assets/THANK_YOU_NEXT_2.0.jpeg", nombre="THANK YOU NEXT 2.0 ",  familia_olfativa="Afrutado, dulce y atalcado", precio=90000, stock=12),
@@ -34,7 +34,7 @@ catalogo_perfumes_dama: List[Perfume] = [
     Perfume(id=6, src="assets/REM.jpeg", nombre="REM",  familia_olfativa="atalcado, caramelo y dulce", precio=90000, stock=10),
 ]
 
-catalogo_perfumes_caballeros: List[Perfume] = [
+catalogo_perfumes: List[Perfume] = [
     Perfume(id=1, src="assets/SORBETTO_ROSSO.jpeg", nombre="SORBETTO ROSSO", familia_olfativa="Acuatico, afrutado y dulce",  precio=80000, stock=15),
     Perfume(id=2, src="assets/BOMBSHELL.jpeg", nombre="BOMBSHELL",  familia_olfativa="Afrutado, dulce y fresco",  precio=80000, stock=8),
     Perfume(id=3, src="assets/THANK_YOU_NEXT_2.0.jpeg", nombre="THANK YOU NEXT 2.0 ",  familia_olfativa="Afrutado, dulce y atalcado", precio=90000, stock=12),
