@@ -48,24 +48,33 @@
         const contenedor = document.getElementById('contenedor-perfumes');
         const inputBusqueda = document.getElementById('input-busqueda');
 
-        const catalogoLocal = [
-            { id: 1, nombre: 'Loción 1', familia_olfativa: 'Familia olfativa 1', precio: 0 },
-            { id: 2, nombre: 'Loción 2', familia_olfativa: 'Familia olfativa 2', precio: 0 },
-            { id: 3, nombre: 'Loción 3', familia_olfativa: 'Familia olfativa 3', precio: 0 },
-            { id: 4, nombre: 'Loción 4', familia_olfativa: 'Familia olfativa 4', precio: 0 },
-            { id: 5, nombre: 'Loción 5', familia_olfativa: 'Familia olfativa 5', precio: 0 },
-            { id: 6, nombre: 'Loción 6', familia_olfativa: 'Familia olfativa 6', precio: 0 }
-        ];
+        async function obtenerDatos() {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/perfumes/');
+                if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+                const data = await response.json();
+                console.log(data);
+                renderizarPerfumes(data);
 
-        function renderizarPerfumes(lista) {
+            } catch (error) {
+                console.error('Fallo en la petición:', error);
+            }
+        }
+
+
+        function renderizarPerfumes(data) {
             contenedor.innerHTML = '';
 
-            lista.forEach(item => {
+            data.forEach(item => {
                 const tarjeta = document.createElement('article');
                 tarjeta.classList.add('perfume');
 
                 tarjeta.innerHTML = `
-                    <div class="perfume-espacio-img" data-id="${item.id}"></div>
+                    <div class="perfume-espacio-img" data-id="${item.id}">
+                        <img src="${item.src}" alt="${item.nombre}">
+                        </div>
                     <div class="perfume-info">
                         <div class="perfume-cabecera">
                             <h3>${item.nombre}</h3>
@@ -88,7 +97,7 @@
             renderizarPerfumes(filtrados);
         });
 
-        renderizarPerfumes(catalogoLocal);
+        obtenerDatos();
     </script>
 </body>
 </html>
