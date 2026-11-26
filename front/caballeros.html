@@ -1,16 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragancia selecta</title>
+    <title>Perfumes para caballero - Fragancia Selecta</title>
 
-    <link rel="stylesheet" href="css/estilos_damas.css">
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos_caballeros.css">
 </head>
 <body>
 
     <header class="encabezado">
-
-        <a href="#" >
+        <a href="index.html">
             <img src="assets/image.png" alt="Logo de Fragancia selecta" class="logo-img">
 
             <div class="nombre-logo">
@@ -21,48 +22,73 @@
         </a>
 
         <form class="buscador" onsubmit="event.preventDefault()">
-            <input type="search"
-                    placeholder="Buscar perfumes, marcas, promos...">
+            <input type="search" id="input-busqueda" placeholder="Buscar perfumes, marcas, promos...">
             <button type="submit">⌕</button>
         </form>
 
-        <a href="#" class="enlace-header">♧ Tienda</a>
-
+        <a href="index.html" class="enlace-header">♧ Tienda</a>
         <a href="#" class="pagos">▤ &nbsp; Pagos en línea →</a>
-
         <a href="#" class="idioma">◎ &nbsp; ES ⌄</a>
+    </header>
 
-</header>
     <nav>
-        <a href="index.html">inicio </a>
-        <a href="caballero.html">caballero</a>
+        <a href="index.html">Inicio</a>
+        <a href="damas.html">Damas</a>
         <a href="contacto.html">Contacto</a>
     </nav>
-    
+
+    <section class="titulo-seccion">
+        <h1>Perfumes para caballero</h1>
+        <p>Fragancias masculinas seleccionadas con carácter y elegancia</p>
+    </section>
+
+    <main id="contenedor-perfumes" class="catalogo-grid"></main>
+
     <script>
-        for (let i = 1; i <= 6; i++) {
-            const perfume = document.createElement('div');
-            perfume.classList.add('perfume');
+        const contenedor = document.getElementById('contenedor-perfumes');
+        const inputBusqueda = document.getElementById('input-busqueda');
 
-            const img = document.createElement('img');
-            img.src = `assets/image.png`;
-            img.alt = `Perfume ${i}`;
+        const catalogoLocal = [
+            { id: 1, nombre: 'Loción 1', familia_olfativa: 'Familia olfativa 1', precio: 0 },
+            { id: 2, nombre: 'Loción 2', familia_olfativa: 'Familia olfativa 2', precio: 0 },
+            { id: 3, nombre: 'Loción 3', familia_olfativa: 'Familia olfativa 3', precio: 0 },
+            { id: 4, nombre: 'Loción 4', familia_olfativa: 'Familia olfativa 4', precio: 0 },
+            { id: 5, nombre: 'Loción 5', familia_olfativa: 'Familia olfativa 5', precio: 0 },
+            { id: 6, nombre: 'Loción 6', familia_olfativa: 'Familia olfativa 6', precio: 0 }
+        ];
 
-            const nombre = document.createElement('h3');
-            nombre.textContent = `Nombre del Perfume ${i}`;
+        function renderizarPerfumes(lista) {
+            contenedor.innerHTML = '';
 
-            const familiaOlfativa = document.createElement('p');
-            familiaOlfativa.textContent = `Familia olfativa: Descripción ${i}`;
+            lista.forEach(item => {
+                const tarjeta = document.createElement('article');
+                tarjeta.classList.add('perfume');
 
-            const precio = document.createElement('p');
-            precio.textContent = `Precio: $${(i * 10000).toLocaleString()}`;
+                tarjeta.innerHTML = `
+                    <div class="perfume-espacio-img" data-id="${item.id}"></div>
+                    <div class="perfume-info">
+                        <div class="perfume-cabecera">
+                            <h3>${item.nombre}</h3>
+                            <span class="precio">$${Number(item.precio).toLocaleString('es-CO')}</span>
+                        </div>
+                        <p class="familia">${item.familia_olfativa}</p>
+                    </div>
+                `;
 
-            perfume.appendChild(img);
-            perfume.appendChild(nombre);
-            perfume.appendChild(familiaOlfativa);
-            perfume.appendChild(precio);
-
-            document.body.appendChild(perfume);
+                contenedor.appendChild(tarjeta);
+            });
         }
+
+        inputBusqueda.addEventListener('input', (e) => {
+            const texto = e.target.value.trim().toLowerCase();
+            const filtrados = catalogoLocal.filter(p =>
+                p.nombre.toLowerCase().includes(texto) ||
+                p.familia_olfativa.toLowerCase().includes(texto)
+            );
+            renderizarPerfumes(filtrados);
+        });
+
+        renderizarPerfumes(catalogoLocal);
     </script>
-    
+</body>
+</html>
