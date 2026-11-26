@@ -40,6 +40,7 @@
         <a href="index.html">Inicio</a>
         <a href="caballeros.html">Caballero</a>
         <a href="damas.html">Dama</a>
+        <a href="descuentos.html">Descuentos</a>
     </nav>
 
     <section class="titulo-seccion">
@@ -71,6 +72,10 @@
                 <strong>Horario de atención</strong>
                 <span>Lunes a sábado: 9:00 a.m. – 7:00 p.m.</span>
             </div>
+
+            <a href="https://wa.me/573026983732?text=Hola%20Fragancia%20Selecta,%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa." target="_blank" class="btn-whatsapp">
+                Escribir directo por WhatsApp
+            </a>
         </aside>
 
         <section class="contacto-tarjeta">
@@ -83,16 +88,16 @@
 
                 <div class="campo-formulario">
                     <label for="correo">Correo electrónico o WhatsApp</label>
-                    <input type="text" id="correo" placeholder="ejemplo@correo.com o 300 123 4567" required>
+                    <input type="text" id="correo" placeholder="ejemplo@correo.com o 300 000 0000" required>
                 </div>
 
                 <div class="campo-formulario">
                     <label for="asunto">Motivo de consulta</label>
                     <select id="asunto">
-                        <option value="asesoria">Asesoría de fragancia</option>
-                        <option value="pedido">Consulta sobre un pedido</option>
-                        <option value="catalogo">Disponibilidad en catálogo</option>
-                        <option value="otro">Otro motivo</option>
+                        <option value="Asesoría de fragancia">Asesoría de fragancia</option>
+                        <option value="Consulta sobre un pedido">Consulta sobre un pedido</option>
+                        <option value="Disponibilidad en catálogo">Disponibilidad en catálogo</option>
+                        <option value="Otro motivo">Otro motivo</option>
                     </select>
                 </div>
 
@@ -101,9 +106,9 @@
                     <textarea id="mensaje" placeholder="Cuéntanos qué perfume buscas o cómo podemos ayudarte..." required></textarea>
                 </div>
 
-                <button type="submit" class="btn-enviar">Enviar mensaje</button>
+                <button type="submit" class="btn-enviar">Enviar mensaje por WhatsApp</button>
                 <div id="mensaje-exito" class="mensaje-exito">
-                    ¡Gracias por escribirnos! Hemos recibido tu mensaje y pronto nos pondremos en contacto contigo.
+                    Redirigiendo a WhatsApp con tu consulta...
                 </div>
             </form>
         </section>
@@ -112,10 +117,21 @@
     <script>
         const formulario = document.getElementById('form-contacto');
         const mensajeExito = document.getElementById('mensaje-exito');
+        const numeroWhatsApp = '573026983732';
 
         formulario.addEventListener('submit', (e) => {
             e.preventDefault();
+
+            const nombre = document.getElementById('nombre').value.trim();
+            const contacto = document.getElementById('correo').value.trim();
+            const asunto = document.getElementById('asunto').value;
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            const texto = `Hola Fragancia Selecta, soy ${nombre}.\n*Motivo:* ${asunto}\n*Contacto:* ${contacto}\n*Mensaje:* ${mensaje}`;
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+
             mensajeExito.style.display = 'block';
+            window.open(url, '_blank');
             formulario.reset();
 
             setTimeout(() => {

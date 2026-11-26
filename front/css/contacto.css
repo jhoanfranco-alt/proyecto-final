@@ -88,6 +88,25 @@ body {
     color: #2c2c2c;
 }
 
+.btn-whatsapp {
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px 20px;
+    background-color: #25d366;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    transition: background-color 0.25s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe5d;
+}
+
 .campo-formulario {
     margin-bottom: 18px;
 }
