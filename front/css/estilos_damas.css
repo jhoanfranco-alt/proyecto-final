@@ -1,76 +1,109 @@
-/* Estilos generales y disposición en cuadrícula */
-body{   
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9f8f6;
-    color: #2c2c2c;
-    margin: 0;
-    padding: 40px 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-    max-width: 1200px;
-    margin-inline: auto;
-}
-/* Tarjeta individual de cada perfume */
-.perfume {
-    background-color: #ffffff;
-    border: 1px solid #eae6df;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.perfume:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-}
-
-/* Imagen del producto */
-.perfume img {
-    width: 100%;
-    max-width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 16px;
-}
-
-/* Nombre del perfume */
-.perfume h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 0 0 8px 0;
-    color: #1a1a1a;
-}
-
-/* Descripción / Familia olfativa */
-.perfume p:first-of-type {
-    font-size: 0.9rem;
-    color: #6e6e6e;
-    margin: 0 0 16px 0;
-    line-height: 1.4;
-}
-
-/* Precio */
-.perfume p:last-of-type {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #9c7a3c;
-    margin-top: auto;
-    margin-bottom: 0;
-    padding-top: 12px;
-    border-top: 1px solid #f2efe9;
-    width: 100%;
-}
-/* Reset básico y tipografía */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f9f8f6;
+    color: #2c2c2c;
+}
+
+.titulo-seccion {
+    text-align: center;
+    padding: 40px 20px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo-seccion h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #1f1f1f;
+    margin-bottom: 8px;
+}
+
+.titulo-seccion p {
+    font-size: 0.95rem;
+    color: #777777;
+}
+
+.catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    padding: 0 24px;
+}
+
+.perfume {
+    background-color: #ffffff;
+    border: 1px solid #eae6df;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.perfume:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.perfume-espacio-img {
+    width: 100%;
+    height: 240px;
+    background-color: #efece6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9e9a92;
+    font-size: 0.85rem;
+}
+
+.perfume-espacio-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.perfume-info {
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.perfume-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.perfume h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.perfume .precio {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    white-space: nowrap;
+}
+
+.perfume .familia {
+    font-size: 0.88rem;
+    color: #6e6e6e;
+    line-height: 1.4;
 }
