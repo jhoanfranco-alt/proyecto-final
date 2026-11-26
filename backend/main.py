@@ -18,9 +18,9 @@ class Perfume(BaseModel):
     id: Optional[int] = None
     src: str
     nombre: str
-    marca: str
+    marca: str = "Sin marca"
     familia_olfativa: str
-    mililitros: int 
+    mililitros: int = 100
     precio: float
     stock: int = 10
 
