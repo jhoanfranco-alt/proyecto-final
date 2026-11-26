@@ -6,7 +6,7 @@
     <title>Ofertas y Descuentos - Fragancia Selecta</title>
 
     <link rel="stylesheet" href="css/estilos.css">
-   <link rel="stylesheet" href="css/descuentos.css">
+    <link rel="stylesheet" href="css/descuentos.css">
 </head>
 <body>
 
@@ -49,6 +49,15 @@
         const contenedor = document.getElementById('contenedor-perfumes');
         const inputBusqueda = document.getElementById('input-busqueda');
 
+        const catalogoDescuentos = [
+            { id: 1, nombre: 'Loción 1', familia_olfativa: 'Familia olfativa 1', precio: 0, precio_anterior: 0, descuento: 20 },
+            { id: 2, nombre: 'Loción 2', familia_olfativa: 'Familia olfativa 2', precio: 0, precio_anterior: 0, descuento: 25 },
+            { id: 3, nombre: 'Loción 3', familia_olfativa: 'Familia olfativa 3', precio: 0, precio_anterior: 0, descuento: 30 },
+            { id: 4, nombre: 'Loción 4', familia_olfativa: 'Familia olfativa 4', precio: 0, precio_anterior: 0, descuento: 15 },
+            { id: 5, nombre: 'Loción 5', familia_olfativa: 'Familia olfativa 5', precio: 0, precio_anterior: 0, descuento: 20 },
+            { id: 6, nombre: 'Loción 6', familia_olfativa: 'Familia olfativa 6', precio: 0, precio_anterior: 0, descuento: 35 }
+        ];
+
         function renderizarPerfumes(lista) {
             contenedor.innerHTML = '';
 
@@ -57,7 +66,9 @@
                 tarjeta.classList.add('perfume');
 
                 const descuento = item.descuento || 20;
-                const precioAnterior = item.precio_anterior || Math.round(Number(item.precio) / (1 - descuento / 100));
+                const precioAnterior = item.precio_anterior !== undefined
+                    ? item.precio_anterior
+                    : Math.round(Number(item.precio) / (1 - descuento / 100));
 
                 tarjeta.innerHTML = `
                     <span class="etiqueta-descuento">-${descuento}%</span>
@@ -78,26 +89,16 @@
             });
         }
 
-        async function cargarPerfumes(filtro = '') {
-            try {
-                const url = filtro
-                    ? `http://127.0.0.1:8000/perfumes/?buscar=${encodeURIComponent(filtro)}`
-                    : 'http://127.0.0.1:8000/perfumes/';
-
-                const respuesta = await fetch(url);
-                const perfumes = await respuesta.json();
-                renderizarPerfumes(perfumes);
-            } catch (error) {
-                console.error('Error conectando con el backend:', error);
-                contenedor.innerHTML = '<p style="text-align:center; grid-column:1/-1;">No se pudo conectar con el servidor. Verifica que uvicorn esté corriendo.</p>';
-            }
-        }
-
         inputBusqueda.addEventListener('input', (e) => {
-            cargarPerfumes(e.target.value.trim());
+            const texto = e.target.value.trim().toLowerCase();
+            const filtrados = catalogoDescuentos.filter(p =>
+                p.nombre.toLowerCase().includes(texto) ||
+                p.familia_olfativa.toLowerCase().includes(texto)
+            );
+            renderizarPerfumes(filtrados);
         });
 
-        cargarPerfumes();
+        renderizarPerfumes(catalogoDescuentos);
     </script>
 </body>
 </html>
