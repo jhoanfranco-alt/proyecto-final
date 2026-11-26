@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas y Descuentos - Fragancia Selecta</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+   <link rel="stylesheet" href="css/descuentos.css">
+</head>
+<body>
+
+    <header class="encabezado">
+        <a href="index.html">
+            <img src="assets/image.png" alt="Logo de Fragancia selecta" class="logo-img">
+
+            <div class="nombre-logo">
+                <div class="fragancia selecta">Fragancia selecta</div>
+                <div class="calidad">Calidad</div>
+                <div class="garantizada">garantizada</div>
+            </div>
+        </a>
+
+        <form class="buscador" onsubmit="event.preventDefault()">
+            <input type="search" id="input-busqueda" placeholder="Buscar perfumes, marcas, promos...">
+            <button type="submit">⌕</button>
+        </form>
+
+        <a href="index.html" class="enlace-header">♧ Tienda</a>
+        <a href="#" class="pagos">▤ &nbsp; Pagos en línea →</a>
+        <a href="#" class="idioma">◎ &nbsp; ES ⌄</a>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="damas.html">Dama</a>
+        <a href="caballeros.html">Caballero</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <section class="titulo-seccion">
+        <h1>Ofertas y Descuentos</h1>
+        <p>Fragancias seleccionadas con precios especiales por tiempo limitado</p>
+    </section>
+
+    <main id="contenedor-perfumes" class="catalogo-grid"></main>
+
+    <script>
+        const contenedor = document.getElementById('contenedor-perfumes');
+        const inputBusqueda = document.getElementById('input-busqueda');
+
+        function renderizarPerfumes(lista) {
+            contenedor.innerHTML = '';
+
+            lista.forEach(item => {
+                const tarjeta = document.createElement('article');
+                tarjeta.classList.add('perfume');
+
+                const descuento = item.descuento || 20;
+                const precioAnterior = item.precio_anterior || Math.round(Number(item.precio) / (1 - descuento / 100));
+
+                tarjeta.innerHTML = `
+                    <span class="etiqueta-descuento">-${descuento}%</span>
+                    <div class="perfume-espacio-img" data-id="${item.id}"></div>
+                    <div class="perfume-info">
+                        <div class="perfume-cabecera">
+                            <h3>${item.nombre}</h3>
+                            <div class="bloque-precios">
+                                <span class="precio-anterior">$${Number(precioAnterior).toLocaleString('es-CO')}</span>
+                                <span class="precio">$${Number(item.precio).toLocaleString('es-CO')}</span>
+                            </div>
+                        </div>
+                        <p class="familia">${item.familia_olfativa}</p>
+                    </div>
+                `;
+
+                contenedor.appendChild(tarjeta);
+            });
+        }
+
+        async function cargarPerfumes(filtro = '') {
+            try {
+                const url = filtro
+                    ? `http://127.0.0.1:8000/perfumes/?buscar=${encodeURIComponent(filtro)}`
+                    : 'http://127.0.0.1:8000/perfumes/';
+
+                const respuesta = await fetch(url);
+                const perfumes = await respuesta.json();
+                renderizarPerfumes(perfumes);
+            } catch (error) {
+                console.error('Error conectando con el backend:', error);
+                contenedor.innerHTML = '<p style="text-align:center; grid-column:1/-1;">No se pudo conectar con el servidor. Verifica que uvicorn esté corriendo.</p>';
+            }
+        }
+
+        inputBusqueda.addEventListener('input', (e) => {
+            cargarPerfumes(e.target.value.trim());
+        });
+
+        cargarPerfumes();
+    </script>
+</body>
+</html>
